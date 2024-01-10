@@ -1,6 +1,7 @@
 import concessionarie.Car;
 import concessionarie.Motorbike;
 import concessionarie.Vehicle;
+import tools.ListTool;
 import tools.Menu;
 
 import java.util.ArrayList;
@@ -55,11 +56,43 @@ public class Main {
                     // Muestro el menu con los tipos de vehiculos disponibles para añadir
                     Menu.vehicleMenu();
 
+                    int opc = sc.nextInt();
+
+                    switch (opc) {
+                        case 1:
+                            ListTool.addCar(carList);
+                            break;
+                        case 2:
+                            break;
+                        default:
+                            System.out.println("Debes introducir un valor valido.");
+
+                    }
+
+
                     break;
                 // Mostrar vehículos
                 case 2:
                     // Muestro el menu para mostrar los vehiculos disponibles
                     Menu.showVehicle();
+
+                    opc = sc.nextInt();
+
+                    switch (opc) {
+                        // Mostrar todos
+                        case 1:
+                            ListTool.showListCar(carList);
+                            break;
+                        // Mostrar por tipo de vehículo
+                        case 2:
+                            break;
+                        // Mostrar por marca
+                        case 3:
+                            break;
+                        default:
+                            System.out.println("Debes introducir un valor valido.");
+
+                    }
 
                     break;
                 // Salir
