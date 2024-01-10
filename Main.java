@@ -60,17 +60,17 @@ public class Main {
 
                     switch (opc) {
                         case 1:
-                            ListTool.addCar(carList);
+                            ListTool.addCar(carList, vehicleList);
                             break;
                         case 2:
+                            ListTool.addMotorbike(motorbikeList, vehicleList);
                             break;
                         default:
                             System.out.println("Debes introducir un valor valido.");
 
                     }
-
-
                     break;
+
                 // Mostrar vehículos
                 case 2:
                     // Muestro el menu para mostrar los vehiculos disponibles
@@ -81,13 +81,25 @@ public class Main {
                     switch (opc) {
                         // Mostrar todos
                         case 1:
-                            ListTool.showListCar(carList);
                             break;
                         // Mostrar por tipo de vehículo
                         case 2:
+                            Menu.vehicleMenu();
+
+                            int opcUserVehicle = sc.nextInt();
+
+                            ListTool.checkCorrectNumber(opcUserVehicle, 0, 2);
+
+                            if (opcUserVehicle == 1) {
+                                ListTool.showListCar(carList);
+                            } else {
+                                ListTool.showListMotorbike(motorbikeList);
+                            }
+
                             break;
                         // Mostrar por marca
                         case 3:
+
                             break;
                         default:
                             System.out.println("Debes introducir un valor valido.");
