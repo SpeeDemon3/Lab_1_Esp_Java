@@ -49,6 +49,11 @@ public class Menu {
         System.out.println(menu);
     }
 
+    /**
+     * Metodo para mostar el menu
+     * para escoger entre visualizar coches
+     * o motocicletas
+     */
     public static void showMenuCarOrMotorbike() {
         String menu = """
                 1 - Mostrar Coches

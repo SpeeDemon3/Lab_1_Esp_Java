@@ -67,7 +67,6 @@ public class Main {
                             break;
                         default:
                             System.out.println("Debes introducir un valor valido.");
-
                     }
                     break;
 
@@ -107,7 +106,6 @@ public class Main {
                             break;
                         default:
                             System.out.println("Debes introducir un valor valido.");
-
                     }
 
                     break;
