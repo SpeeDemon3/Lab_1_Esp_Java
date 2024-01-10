@@ -16,9 +16,44 @@ import java.util.Scanner;
 public class ListTool {
 
     /**
+     * Metodo para comprobar si el valor introducido por un usuario es valido
+     * @param numMin -> Valor minimo
+     * @param numMax -> Valor Maximo
+     * @return -> Valor correcto introducido por el usuario
+     */
+    public static Integer checkCorrectNumber(Integer numMin, Integer numMax) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Integer number = sc.nextInt();
+
+        // Utilizando un bucle while obligo al usuario a introducir un valor numerico valido
+        while (number <= numMin || number > numMax) {
+            try {
+                number = sc.nextInt();
+                // Vacio el buffer
+                sc.nextLine();
+                // Controlo la excepcion que pudiese ocurrir si el usuario introduce algo distinto de un valor numerico
+
+                if (number <= numMin || number > numMax) {
+                    System.out.println("Debes introducir un valor válido:");
+                }
+
+            } catch (InputMismatchException ime) {
+                System.out.println("Debes introducir un valor numérico válido:");
+                number = 0;
+            }
+        }
+
+        return number;
+    }
+
+    /**
      * Metodo para introducir un coche dentro de una lista de coches
+     * y otra lista de vehiculos
      * controlando los errores que pudiese provocar el usuario
      * @param listCar -> Lista donde se añadiran los coches de tipo ArrayList
+     * @param listVehicle -> Lista donde se añadiran los coches sin importar el tipo de vehiculo de tipo ArrayList
      */
     public static void addCar(List<Car> listCar, List<Vehicle> listVehicle) {
 
@@ -31,13 +66,11 @@ public class ListTool {
         String modelCarUser = sc.nextLine().toLowerCase();
 
         System.out.println("Introduce el año del vehículo (Indicandolo con un número entero desde el año 2001 al 2025):");
-        Integer yearCarUser = 0;
-        checkCorrectNumber(yearCarUser, 2000 , 2025);
+        Integer yearCarUser = checkCorrectNumber(2000 , 2025);
 
 
         System.out.println("Introduce el número de puertas del vehículo (Indicandolo con un número entero del 2 al 5):");
-        Integer numberOfDoorsCar = 0;
-        checkCorrectNumber(numberOfDoorsCar, 1, 6);
+        Integer numberOfDoorsCar = checkCorrectNumber(1, 6);
 
         Boolean control = true;
         Boolean isConvertibleCar = false;
@@ -69,38 +102,14 @@ public class ListTool {
         listVehicle.add(car);
     }
 
+
     /**
-     * Metodo para comprobar si el valor introducido por un usuario es valido
-     * @param number
-     * @param numMin -> Valor minimo
-     * @param numMax -> Valor Maximo
-     * @return -> Valor correcto introducido por el usuario
+     * Metodo para introducir un coche dentro de una lista de motocicletas
+     * y otra lista de vehiculos
+     * controlando los errores que pudiese provocar el usuario
+     * @param motorbikeList -> Lista donde se añadiran las motocicletas de tipo ArrayList
+     * @param listVehicle -> Lista donde se añadiran las motocicletas sin importar el tipo de vehiculo de tipo ArrayList
      */
-    public static Integer checkCorrectNumber(Integer number, Integer numMin, Integer numMax) {
-
-        Scanner sc = new Scanner(System.in);
-
-        // Utilizando un bucle while obligo al usuario a introducir un valor numerico valido
-        while (number <= numMin || number > numMax) {
-            try {
-                number = sc.nextInt();
-                // Vacio el buffer
-                sc.nextLine();
-                // Controlo la excepcion que pudiese ocurrir si el usuario introduce algo distinto de un valor numerico
-
-                if (number <= numMin || number > numMax) {
-                    System.out.println("Debes introducir un valor válido:");
-                }
-
-            } catch (InputMismatchException ime) {
-                System.out.println("Debes introducir un valor numérico válido:");
-                number = 0;
-            }
-        }
-
-        return number;
-    }
-
     public static void addMotorbike(List<Motorbike> motorbikeList, List<Vehicle> listVehicle) {
 
         Scanner sc = new Scanner(System.in);
@@ -113,12 +122,10 @@ public class ListTool {
         String modelCarUser = sc.nextLine().toLowerCase();
 
         System.out.println("Introduce el año del vehículo (Indicandolo con un número entero desde el año 2000 al 2025):");
-        Integer yearMotorBikeUser = 0;
-        checkCorrectNumber(yearMotorBikeUser, 1999 , 2025);
+        Integer yearMotorBikeUser = checkCorrectNumber(1999 , 2025);
 
         System.out.println("Introduce el desplazamiento del motor (Indicandolo con un número entero entre 1 y 220):");
-        Integer engineDisplacement = 0;
-        checkCorrectNumber(engineDisplacement, 0, 220);
+        Integer engineDisplacement = checkCorrectNumber(0, 220);
 
         Boolean control = true;
         Boolean hasSidecar = false;
@@ -184,6 +191,11 @@ public class ListTool {
         }
     }
 
+    /**
+     * Metodo para mostrar los vehiculos por una marca especifica
+     * @param vehicleList -> Lista de vehiculos
+     * @param brand -> Marca por la que se buscaran los vehiculos
+     */
     public static void showBrandVehicles(List<Vehicle> vehicleList, String brand) {
 
         vehicleList.stream()

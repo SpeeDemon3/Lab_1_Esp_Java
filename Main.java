@@ -77,6 +77,7 @@ public class Main {
                     Menu.showMenuVehicle();
 
                     opc = sc.nextInt();
+                    sc.nextLine();
 
                     switch (opc) {
                         // Mostrar todos
@@ -87,9 +88,7 @@ public class Main {
                         case 2:
                             Menu.showMenuCarOrMotorbike();
 
-                            int opcUserVehicle = sc.nextInt();
-
-                            ListTool.checkCorrectNumber(opcUserVehicle, 0, 2);
+                            Integer opcUserVehicle = ListTool.checkCorrectNumber(0, 2);
 
                             if (opcUserVehicle == 1) {
                                 ListTool.showListCar(carList);
@@ -114,7 +113,7 @@ public class Main {
                     break;
                 // Salir
                 case 3:
-                    System.out.println("Finalizando programa...");
+                    System.out.println("Finalizando programa...\n");
                     // Cambio el valor de la variable para poder selir del bucle
                     control = true;
                     break;
@@ -124,7 +123,7 @@ public class Main {
             }
         } while(!control);
 
-        System.out.println("Lab realizado por Antonio Ruiz Benito.");
+        System.out.println("\t\t\t\t\t\tLab realizado por Antonio Ruiz Benito.");
 
     }
 }

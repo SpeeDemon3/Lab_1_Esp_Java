@@ -46,7 +46,10 @@ public class Motorbike extends Vehicle{
     @Override
     public String toString() {
         return "Motorbike{" +
-                "engineDisplacement=" + engineDisplacement +
+                "brand=" + this.getBrand() +
+                ", model=" + this.getModel() +
+                ", year=" + this.getYear() +
+                ", engineDisplacement=" + engineDisplacement +
                 ", hasSidecar=" + hasSidecar +
                 '}';
     }

@@ -48,6 +48,9 @@ public class Car extends Vehicle{
     @Override
     public String toString() {
         return "Car{" +
+                "brand=" + this.getBrand() +
+                ", model=" + this.getModel() +
+                ", year=" + this.getYear() +
                 "numberOfDoors=" + numberOfDoors +
                 ", isConvertible=" + isConvertible +
                 '}';
