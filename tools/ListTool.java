@@ -15,15 +15,14 @@ import java.util.Scanner;
  */
 public class ListTool {
 
-    // Utilizo Scanner en static para poder utilizarla en todos los metodos de esta clase
-    static Scanner sc = new Scanner(System.in);
-
     /**
      * Metodo para introducir un coche dentro de una lista de coches
      * controlando los errores que pudiese provocar el usuario
      * @param listCar -> Lista donde se añadiran los coches de tipo ArrayList
      */
     public static void addCar(List<Car> listCar, List<Vehicle> listVehicle) {
+
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduce la marca del vehículo:");
         String modelUser = sc.nextLine().toLowerCase();
@@ -78,6 +77,9 @@ public class ListTool {
      * @return -> Valor correcto introducido por el usuario
      */
     public static Integer checkCorrectNumber(Integer number, Integer numMin, Integer numMax) {
+
+        Scanner sc = new Scanner(System.in);
+
         // Utilizando un bucle while obligo al usuario a introducir un valor numerico valido
         while (number <= numMin || number > numMax) {
             try {
@@ -101,6 +103,8 @@ public class ListTool {
 
     public static void addMotorbike(List<Motorbike> motorbikeList, List<Vehicle> listVehicle) {
 
+        Scanner sc = new Scanner(System.in);
+
         //String brand, String model, Integer year, Integer engineDisplacement, Boolean hasSidecar
         System.out.println("Introduce la marca de la motocicleta:");
         String modelUser = sc.nextLine().toLowerCase();
@@ -110,7 +114,7 @@ public class ListTool {
 
         System.out.println("Introduce el año del vehículo (Indicandolo con un número entero desde el año 2000 al 2025):");
         Integer yearMotorBikeUser = 0;
-        checkCorrectNumber(yearMotorBikeUser, 2000 , 2025);
+        checkCorrectNumber(yearMotorBikeUser, 1999 , 2025);
 
         System.out.println("Introduce el desplazamiento del motor (Indicandolo con un número entero entre 1 y 220):");
         Integer engineDisplacement = 0;
@@ -147,27 +151,45 @@ public class ListTool {
     }
 
     /**
-     * Metodo para recorrer un ArrayList
+     * Metodo para recorrer un Lista
      * @param list -> Lista de tipo Car
      */
     public static void showListCar (List<Car> list) {
         for (Car l :  list) {
-            System.out.println("Marca: " + l.getBrand() + " - Modelo :" + l.getModel() + " - Año: "
+            System.out.println("Marca: " + l.getBrand() + " - Modelo: " + l.getModel() + " - Año: "
                     + l.getYear() + " - N.Puertas: " + l.getNumberOfDoors()
                     + " - Convertible: " + l.getConvertible());
         }
     }
 
     /**
-     * Metodo para recorrer un ArrayList
+     * Metodo para recorrer un Lista
      * @param list -> Lista de tipo Motorbike
      */
     public static void showListMotorbike (List<Motorbike> list) {
         for (Motorbike l :  list) {
-            System.out.println("Marca: " + l.getBrand() + " - Modelo :" + l.getModel() + " - Año: "
+            System.out.println("Marca: " + l.getBrand() + " - Modelo:" + l.getModel() + " - Año: "
                     + l.getYear() + " - Desplazamiento: " + l.getEngineDisplacement()
                     + " - Sidecar: " + l.getHasSidecar());
         }
+    }
+
+    /**
+     * Metodo para recorrer una Lista
+     * @param vehicleList -> Lista de tipo Vehicle
+     */
+    public static void showVehicles(List<Vehicle> vehicleList) {
+        for (Vehicle v : vehicleList) {
+            System.out.println(v);
+        }
+    }
+
+    public static void showBrandVehicles(List<Vehicle> vehicleList, String brand) {
+
+        vehicleList.stream()
+                .filter(vehicle -> vehicle.getBrand().equalsIgnoreCase(brand))
+                .forEach(vehicle -> System.out.println(vehicle));
+
     }
 
 }

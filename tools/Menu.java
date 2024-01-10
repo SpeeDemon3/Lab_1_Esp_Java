@@ -39,11 +39,20 @@ public class Menu {
      * Metodo para mostrar el menu
      * de los vehiculos disponibles
      */
-    public static void showVehicle() {
+    public static void showMenuVehicle() {
         String menu = """
                 1 - Mostrar todos
                 2 - Mostrar por tipo de vehículo
                 3 - Mostrar por marca
+                """;
+
+        System.out.println(menu);
+    }
+
+    public static void showMenuCarOrMotorbike() {
+        String menu = """
+                1 - Mostrar Coches
+                2 - Mostrar Motocicletas
                 """;
 
         System.out.println(menu);

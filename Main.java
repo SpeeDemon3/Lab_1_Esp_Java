@@ -74,17 +74,18 @@ public class Main {
                 // Mostrar vehículos
                 case 2:
                     // Muestro el menu para mostrar los vehiculos disponibles
-                    Menu.showVehicle();
+                    Menu.showMenuVehicle();
 
                     opc = sc.nextInt();
 
                     switch (opc) {
                         // Mostrar todos
                         case 1:
+                            ListTool.showVehicles(vehicleList);
                             break;
                         // Mostrar por tipo de vehículo
                         case 2:
-                            Menu.vehicleMenu();
+                            Menu.showMenuCarOrMotorbike();
 
                             int opcUserVehicle = sc.nextInt();
 
@@ -95,10 +96,14 @@ public class Main {
                             } else {
                                 ListTool.showListMotorbike(motorbikeList);
                             }
-
                             break;
                         // Mostrar por marca
                         case 3:
+                            System.out.println("Introduce la marca del vehículo:");
+
+                            String brandUser = sc.nextLine();
+
+                            ListTool.showBrandVehicles(vehicleList, brandUser);
 
                             break;
                         default:
